@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Mixology</string>
-    <string name="recipes_heading">Recipes</string>
+    <string name="recipe_list_heading">Recipe List</string>
+    <string name="recipe_details_heading">Recipe Details</string>
 </resources>

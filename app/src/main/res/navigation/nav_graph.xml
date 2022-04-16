@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/RecipeListFragment"
         android:name="com.mixology.RecipeListFragment"
-        android:label="@string/recipes_heading"
+        android:label="@string/recipe_list_heading"
         tools:layout="@layout/recipe_list_fragment">
 
         <action
@@ -18,11 +18,12 @@
     <fragment
         android:id="@+id/RecipeDetailFragment"
         android:name="com.mixology.RecipeDetailFragment"
-        android:label="UPDATE LABEL 2"
+        android:label="@string/recipe_details_heading"
         tools:layout="@layout/recipe_detail_fragment">
 
         <action
-            android:id="@+id/action_RecipeDetailFragment_to_RecipeListFragment"
-            app:destination="@id/RecipeListFragment" />
+            android:id="@+id/action_navigate_to_RecipeListFragment"
+            app:destination="@id/RecipeListFragment"
+        />
     </fragment>
 </navigation>
