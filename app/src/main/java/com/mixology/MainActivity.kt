@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             recipeList.add(recipe)
             adapter.notifyDataSetChanged()
 
-            val myToast = Toast.makeText(this, "New Recipe Added!", Toast.LENGTH_SHORT)
+            val myToast = Toast.makeText(this, "Recipe List Updated!", Toast.LENGTH_SHORT)
             myToast.show()
         }
     }
