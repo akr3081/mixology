@@ -7,13 +7,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.widget.ListView
 import android.widget.Toast
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.mixology.adapters.RecipeAdapter
+import com.mixology.common.getJSONAsset
 import com.mixology.databinding.ActivityMainBinding
 import com.mixology.models.Recipe
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
@@ -32,6 +34,12 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        // Sets up initial recipe list (mocked for now)
+        val gson = Gson()
+        val jsonStr = getJSONAsset(this, "recipes.json")
+        val type = object: TypeToken<List<Recipe>>() {}.type
+        recipeList = gson.fromJson(jsonStr, type)
+
 
         // Sets up recipeList adapter
         val adapter = RecipeAdapter(this, recipeList)
@@ -40,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         // Sets click event for fab button
         binding.fab.setOnClickListener { view ->
-            val recipe = Recipe("Recipe", Random.nextInt().toString())
+            val recipe = Recipe("Recipe", Random.nextInt().toString(), recipeList[0].image)
             recipeList.add(recipe)
             adapter.notifyDataSetChanged()
 

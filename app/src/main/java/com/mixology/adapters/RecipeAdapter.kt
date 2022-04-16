@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import com.mixology.R
 import com.mixology.models.Recipe
+import com.squareup.picasso.Picasso
 
 class RecipeAdapter(private val context: Context,
                     private val dataSource: ArrayList<Recipe>) : BaseAdapter() {
@@ -31,11 +33,14 @@ class RecipeAdapter(private val context: Context,
         val rowView = inflater.inflate(R.layout.list_item_recipe, parent, false)
 
         val titleTextView = rowView.findViewById(R.id.recipe_list_title) as TextView
-        val descriptionTextView = rowView.findViewById(R.id.recipe_list_desc) as TextView
+        val descriptionTextView = rowView.findViewById(R.id.recipe_list_description) as TextView
+        val imageView = rowView.findViewById(R.id.recipe_list_image) as ImageView
 
         val recipe = getItem(position) as Recipe
         titleTextView.text = recipe.title
-        descriptionTextView.text = recipe.desc
+        descriptionTextView.text = recipe.description
+
+        Picasso.get().load(recipe.image).placeholder(R.drawable.thumbnail).into(imageView)
 
         return rowView
     }

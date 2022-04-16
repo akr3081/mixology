@@ -23,12 +23,6 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.countButton.setOnClickListener {
-            val countString = binding.textviewFirst.text.toString();
-            var count = countString.toInt();
-            count++;
-            binding.textviewFirst.text = count.toString();
-        }
     }
 
 

@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Rum and Coke",
+    "description": "Example recipe containing Rum and Coke",
+    "image": "https://picsum.photos/200"
+  },
+  {
+    "title": "Pina Colada",
+    "description": "Contains Rum, Pineapple Juice, and Coconut Syrup",
+    "image": "https://picsum.photos/200"
+  },
+  {
+    "title": "Dark 'N' Stormy",
+    "description": "Cocktail containing Rum and Ginger Beer",
+    "image": "https://picsum.photos/200"
+  }
+]
