@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/RecipeListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.mixology.FirstFragment"
+        android:id="@+id/RecipeListFragment"
+        android:name="com.mixology.RecipeListFragment"
         android:label="@string/recipes_heading"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/recipe_list_fragment">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_navigate_to_RecipeDetailFragment"
+            app:destination="@id/RecipeDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.mixology.SecondFragment"
+        android:id="@+id/RecipeDetailFragment"
+        android:name="com.mixology.RecipeDetailFragment"
         android:label="UPDATE LABEL 2"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/recipe_detail_fragment">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_RecipeDetailFragment_to_RecipeListFragment"
+            app:destination="@id/RecipeListFragment" />
     </fragment>
 </navigation>
