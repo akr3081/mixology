@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.mixology.FirstFragment"
-        android:label="UPDATE LABEL 1"
+        android:label="@string/recipes_heading"
         tools:layout="@layout/fragment_first">
 
         <action
