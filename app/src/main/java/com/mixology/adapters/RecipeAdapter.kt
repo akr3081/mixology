@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.mixology.R
 import com.mixology.models.Recipe
-import com.squareup.picasso.Picasso
 
 class RecipeAdapter(private val context: Context,
                     private val dataSource: ArrayList<Recipe>) : BaseAdapter() {
@@ -39,8 +39,7 @@ class RecipeAdapter(private val context: Context,
         val recipe = getItem(position) as Recipe
         titleTextView.text = recipe.title
         descriptionTextView.text = recipe.description
-
-        Picasso.get().load(recipe.image).placeholder(R.drawable.thumbnail).into(imageView)
+        Glide.with(context).load(recipe.image).placeholder(R.drawable.thumbnail).into(imageView)
 
         return rowView
     }

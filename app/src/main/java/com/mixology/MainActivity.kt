@@ -48,7 +48,8 @@ class MainActivity : AppCompatActivity() {
 
         // Sets click event for fab button
         binding.fab.setOnClickListener { view ->
-            val recipe = Recipe("Recipe", Random.nextInt().toString(), recipeList[0].image)
+            val imageUrl = "https://picsum.photos/" + (0..1000).random()
+            val recipe = Recipe("Recipe", Random.nextInt().toString(), imageUrl)
             recipeList.add(recipe)
             adapter.notifyDataSetChanged()
 
