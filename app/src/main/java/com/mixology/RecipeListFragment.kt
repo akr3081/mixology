@@ -39,10 +39,6 @@ class RecipeListFragment : Fragment() {
 
         appContext = requireContext()
 
-        // Sets up initial recipe list (mocked for now)
-        val res = getRecipeList("f=m", 2)
-        recipeList.addAll(res)
-
         val adapter = RecipeAdapter(appContext, recipeList)
         binding.recipeList.adapter = adapter
 
@@ -53,13 +49,15 @@ class RecipeListFragment : Fragment() {
 
         // Adds new recipe to the recipeList when fab is clicked
         binding.fab.setOnClickListener { view ->
-            val myToast = Toast.makeText(appContext, "Fetched Recipe Data", Toast.LENGTH_SHORT)
-            myToast.show()
-
-            val results = getRecipeList("f=d")
+            val letter = (('a'..'z')).random()
+            val results = getRecipeList("f=$letter")
             recipeList.clear()
             recipeList.addAll(results)
             adapter.notifyDataSetChanged()
+
+            val count = recipeList.size.toString()
+            val myToast = Toast.makeText(appContext, "Fetched $count Recipes", Toast.LENGTH_SHORT)
+            myToast.show()
         }
     }
 

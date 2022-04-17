@@ -4,6 +4,7 @@ import android.content.Context
 import com.mixology.models.Recipe
 import org.json.JSONObject
 import java.io.IOException
+import java.lang.Exception
 import java.lang.Math.min
 import java.net.URL
 
@@ -32,20 +33,23 @@ fun getJSONAsset(context: Context, fileName: String): String? {
 fun getRecipeList(filter: String, count: Int? = null): ArrayList<Recipe> {
     val recipes = ArrayList<Recipe>()
 
-    val res = URL("https://www.thecocktaildb.com/api/json/v1/1/search.php?$filter").readText()
-    val recipeArr = JSONObject(res).getJSONArray("drinks")
+    try {
+        val res = URL("https://www.thecocktaildb.com/api/json/v1/1/search.php?$filter").readText()
+        val recipeArr = JSONObject(res).getJSONArray("drinks")
+        val recipeCount = if(count != null) min(recipeArr.length(), count) else recipeArr.length()
 
-    val recipeCount = if(count != null) min(recipeArr.length(), count) else recipeArr.length()
+        for(i in 0 until recipeCount) {
+            val recipeObj = recipeArr.getJSONObject(i)
 
-    for(i in 0 until recipeCount) {
-        val recipeObj = recipeArr.getJSONObject(i)
+            val title = recipeObj.getString("strDrink")
+            val description = recipeObj.getString("strInstructions")
+            val image = recipeObj.getString("strDrinkThumb")
 
-        val title = recipeObj.getString("strDrink")
-        val description = recipeObj.getString("strInstructions")
-        val image = recipeObj.getString("strDrinkThumb")
-
-        val r = Recipe(title, description, image)
-        recipes.add(r)
+            val r = Recipe(title, description, image)
+            recipes.add(r)
+        }
+    } catch(e: Exception) {
+        println(e)
     }
 
     return recipes
