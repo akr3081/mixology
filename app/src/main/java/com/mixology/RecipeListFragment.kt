@@ -2,20 +2,17 @@ package com.mixology
 
 import android.content.Context
 import android.os.Bundle
+import android.os.StrictMode
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.mixology.adapters.RecipeAdapter
-import com.mixology.common.getJSONAsset
+import com.mixology.common.getRecipeList
 import com.mixology.databinding.RecipeListFragmentBinding
 import com.mixology.models.Recipe
-import kotlin.random.Random
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -31,21 +28,20 @@ class RecipeListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        println("FRAGMENT onCreateView.................")
         _binding = RecipeListFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
 
         appContext = requireContext()
 
         // Sets up initial recipe list (mocked for now)
-        val gson = Gson()
-        val jsonStr = getJSONAsset(appContext, "recipes.json")
-        val type = object: TypeToken<List<Recipe>>() {}.type
-        recipeList = gson.fromJson(jsonStr, type)
+        val res = getRecipeList("f=m", 2)
+        recipeList.addAll(res)
 
         val adapter = RecipeAdapter(appContext, recipeList)
         binding.recipeList.adapter = adapter
@@ -57,16 +53,15 @@ class RecipeListFragment : Fragment() {
 
         // Adds new recipe to the recipeList when fab is clicked
         binding.fab.setOnClickListener { view ->
-            val imageUrl = "https://picsum.photos/" + (0..1000).random()
-            val recipe = Recipe("Recipe" + Random.nextInt().toString(), "Description", imageUrl)
-            recipeList.add(recipe)
-            adapter.notifyDataSetChanged()
-
-            val myToast = Toast.makeText(appContext, "Recipe List Updated!", Toast.LENGTH_SHORT)
+            val myToast = Toast.makeText(appContext, "Fetched Recipe Data", Toast.LENGTH_SHORT)
             myToast.show()
+
+            val results = getRecipeList("f=d")
+            recipeList.clear()
+            recipeList.addAll(results)
+            adapter.notifyDataSetChanged()
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
