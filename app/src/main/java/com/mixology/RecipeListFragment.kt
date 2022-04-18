@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
-import com.mixology.adapters.RecipeAdapter
+import com.mixology.adapters.RecipeListAdapter
 import com.mixology.common.getRecipeList
 import com.mixology.databinding.RecipeListFragmentBinding
 import com.mixology.models.Recipe
@@ -39,11 +41,12 @@ class RecipeListFragment : Fragment() {
 
         appContext = requireContext()
 
-        val adapter = RecipeAdapter(appContext, recipeList)
+        val adapter = RecipeListAdapter(appContext, recipeList)
         binding.recipeList.adapter = adapter
 
         // Navigates to recipeDetail fragment when item is clicked
         binding.recipeList.setOnItemClickListener { parent, _, position, _ ->
+            setFragmentResult("recipeId", bundleOf("recipeId" to recipeList[position].id))
             findNavController().navigate(R.id.action_navigate_to_RecipeDetailFragment)
         }
 

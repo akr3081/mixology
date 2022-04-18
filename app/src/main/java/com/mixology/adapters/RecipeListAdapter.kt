@@ -11,8 +11,8 @@ import com.bumptech.glide.Glide
 import com.mixology.R
 import com.mixology.models.Recipe
 
-class RecipeAdapter(private val context: Context,
-                    private val dataSource: ArrayList<Recipe>) : BaseAdapter() {
+class RecipeListAdapter(private val context: Context,
+                        private val dataSource: ArrayList<Recipe>) : BaseAdapter() {
 
     private val inflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

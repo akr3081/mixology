@@ -41,11 +41,12 @@ fun getRecipeList(filter: String, count: Int? = null): ArrayList<Recipe> {
         for(i in 0 until recipeCount) {
             val recipeObj = recipeArr.getJSONObject(i)
 
+            val id = recipeObj.getString("idDrink")
             val title = recipeObj.getString("strDrink")
             val description = recipeObj.getString("strInstructions")
             val image = recipeObj.getString("strDrinkThumb")
 
-            val r = Recipe(title, description, image)
+            val r = Recipe(id, title, description, image)
             recipes.add(r)
         }
     } catch(e: Exception) {
@@ -53,4 +54,20 @@ fun getRecipeList(filter: String, count: Int? = null): ArrayList<Recipe> {
     }
 
     return recipes
+}
+
+/**
+ * Gets recipe details based on id from thecocktaildb
+ * @param recipeId - The id of the recipe
+ */
+fun getRecipeDetails(recipeId: String): Recipe {
+    val res = URL("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=$recipeId").readText()
+    val recipeObj = JSONObject(res).getJSONArray("drinks").getJSONObject(0)
+
+    val id = recipeObj.getString("idDrink")
+    val title = recipeObj.getString("strDrink")
+    val description = recipeObj.getString("strInstructions")
+    val image = recipeObj.getString("strDrinkThumb")
+
+    return Recipe(id, title, description, image)
 }
