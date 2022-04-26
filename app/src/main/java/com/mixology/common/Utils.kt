@@ -1,28 +1,34 @@
 package com.mixology.common
 
-import android.content.Context
+import com.mixology.models.Ingredient
 import com.mixology.models.Recipe
 import org.json.JSONObject
-import java.io.IOException
 import java.lang.Exception
 import java.lang.Math.min
 import java.net.URL
 
 /**
- * Loads json string from asset filename
- * @param context - Context of the application where assets file is pulled from
- * @param fileName - Path of the assets file
+ * Gets a formatted list of ingredients from the recipeObj
+ * @param recipeObj - JSONObject containing recipe data
  */
-fun getJSONAsset(context: Context, fileName: String): String? {
-    var json: String = ""
+fun formatIngredientsList(recipeObj: JSONObject): ArrayList<Ingredient> {
+    val ingredients = ArrayList<Ingredient>()
 
-    try {
-        json = context.assets.open(fileName).bufferedReader().use { it.readText() }
-    } catch (ioException: IOException) {
-        ioException.printStackTrace()
-        return null
+    // Converts all 15 ingredients/measures into Ingredient model and adds to list
+    for (i in 1..15) {
+        val name = recipeObj.getString("strIngredient$i")
+        val amount = recipeObj.getString("strMeasure$i")
+
+        // Need to check for "null" as getString will cast null to string
+        val isValidName = name !== "null" && name.isNotBlank()
+        val isValidAmount = amount !== "null" && amount.isNotBlank()
+
+        if (isValidName && isValidAmount) {
+            ingredients.add(Ingredient(name, amount))
+        }
     }
-    return json
+
+    return ingredients
 }
 
 /**
@@ -45,8 +51,9 @@ fun getRecipeList(filter: String, count: Int? = null): ArrayList<Recipe> {
             val title = recipeObj.getString("strDrink")
             val description = recipeObj.getString("strInstructions")
             val image = recipeObj.getString("strDrinkThumb")
+            val ingredients = formatIngredientsList(recipeObj)
 
-            val r = Recipe(id, title, description, image)
+            val r = Recipe(id, title, description, image, ingredients)
             recipes.add(r)
         }
     } catch(e: Exception) {
@@ -68,6 +75,7 @@ fun getRecipeDetails(recipeId: String): Recipe {
     val title = recipeObj.getString("strDrink")
     val description = recipeObj.getString("strInstructions")
     val image = recipeObj.getString("strDrinkThumb")
+    val ingredients = formatIngredientsList(recipeObj)
 
-    return Recipe(id, title, description, image)
+    return Recipe(id, title, description, image, ingredients)
 }

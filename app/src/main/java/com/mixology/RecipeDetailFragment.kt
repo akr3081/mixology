@@ -1,6 +1,9 @@
 package com.mixology
 
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.BulletSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +36,18 @@ class RecipeDetailFragment : Fragment() {
 
             binding.recipeDetailTitle.text = recipeDetail.title
             binding.recipeDetailInstructions.text = recipeDetail.description
+
+            // Makes bulleted list of ingredients
+            val builder =  SpannableStringBuilder()
+            for (i in 0..recipeDetail.ingredients.size - 1) {
+                var str = recipeDetail.ingredients[i].toString()
+                if (i < recipeDetail.ingredients.size - 1) {
+                    str += "\n"
+                }
+                builder.append(str, BulletSpan(15), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            }
+
+            binding.recipeDetailIngredients.text = builder
 
             Glide.with(this).load(recipeDetail.image).placeholder(R.drawable.thumbnail).into(binding.recipeDetailImage)
         }

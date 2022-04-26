@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/thumbnail.xml" value="0.1975" />
+        <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.219" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2776268115942029" />
