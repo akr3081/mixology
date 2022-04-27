@@ -13,7 +13,12 @@
 
         <action
             android:id="@+id/action_navigate_to_RecipeDetailFragment"
-            app:destination="@id/RecipeDetailFragment" />
+            app:destination="@id/RecipeDetailFragment"
+        />
+        <action
+            android:id="@+id/action_navigate_to_IngredientListFragment"
+            app:destination="@id/IngredientListFragment"
+        />
     </fragment>
     <fragment
         android:id="@+id/RecipeDetailFragment"
@@ -25,5 +30,11 @@
             android:id="@+id/action_navigate_to_RecipeListFragment"
             app:destination="@id/RecipeListFragment"
         />
+    </fragment>
+    <fragment
+        android:id="@+id/IngredientListFragment"
+        android:name="com.mixology.IngredientListFragment"
+        android:label="@string/ingredient_list_heading"
+        tools:layout="@layout/ingredient_list_fragment">
     </fragment>
 </navigation>

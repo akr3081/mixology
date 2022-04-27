@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         // CLicking on toolbar will navigate back to recipe list fragment
         binding.toolbar.setNavigationOnClickListener {
-            navController.navigate(R.id.action_navigate_to_RecipeListFragment)
+            navController.navigateUp()
         }
     }
 }

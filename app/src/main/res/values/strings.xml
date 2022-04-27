@@ -2,4 +2,5 @@
     <string name="app_name">Mixology</string>
     <string name="recipe_list_heading">Recipe List</string>
     <string name="recipe_details_heading">Recipe Details</string>
+    <string name="ingredient_list_heading">Ingredient List</string>
 </resources>

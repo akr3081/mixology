@@ -27,9 +27,7 @@ class RecipeListFragment : Fragment() {
 
     private var recipeList = ArrayList<Recipe>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = RecipeListFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -48,6 +46,11 @@ class RecipeListFragment : Fragment() {
         binding.recipeList.setOnItemClickListener { parent, _, position, _ ->
             setFragmentResult("recipeId", bundleOf("recipeId" to recipeList[position].id))
             findNavController().navigate(R.id.action_navigate_to_RecipeDetailFragment)
+        }
+
+        // Navigates to ingredient list fragment when button
+        binding.ingredientListButton.setOnClickListener { view ->
+            findNavController().navigate(R.id.action_navigate_to_IngredientListFragment)
         }
 
         // Adds new recipe to the recipeList when fab is clicked
