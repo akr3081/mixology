@@ -8,9 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mixology.adapters.IngredientListAdapter
+import com.mixology.common.getIngredientsList
 import com.mixology.databinding.IngredientListFragmentBinding
 import com.mixology.models.Ingredient
-import kotlin.random.Random
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -37,9 +37,9 @@ class IngredientListFragment : Fragment() {
         val adapter = IngredientListAdapter(appContext, ingredientList)
         binding.ingredientList.adapter = adapter
 
-        for (i in 0..10) {
-            ingredientList.add(Ingredient("Ingredient ${Random.nextInt()}"))
-        }
+        val results = getIngredientsList("ASC", 100)
+        ingredientList.clear()
+        ingredientList.addAll(results)
         adapter.notifyDataSetChanged()
     }
 
