@@ -32,9 +32,9 @@ class RecipeListAdapter(private val context: Context,
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val rowView = inflater.inflate(R.layout.list_item_recipe, parent, false)
 
-        val titleTextView = rowView.findViewById(R.id.recipe_list_title) as TextView
-        val descriptionTextView = rowView.findViewById(R.id.recipe_list_description) as TextView
-        val imageView = rowView.findViewById(R.id.recipe_list_image) as ImageView
+        val titleTextView = rowView.findViewById(R.id.recipe_title) as TextView
+        val descriptionTextView = rowView.findViewById(R.id.recipe_description) as TextView
+        val imageView = rowView.findViewById(R.id.recipe_image) as ImageView
 
         val recipe = getItem(position) as Recipe
         titleTextView.text = recipe.title

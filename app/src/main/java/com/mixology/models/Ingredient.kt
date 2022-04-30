@@ -1,6 +1,6 @@
 package com.mixology.models
 
-class Ingredient(ingredientName: String, ingredientAmount: String) {
+class Ingredient(ingredientName: String, ingredientAmount: String = "") {
     var name: String = ingredientName
     var amount: String = ingredientAmount
 
