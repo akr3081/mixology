@@ -5,15 +5,20 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/thumbnail.xml" value="0.1975" />
         <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.219" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2776268115942029" />
-        <entry key="app/src/main/res/layout/content_main.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2776268115942029" />
         <entry key="app/src/main/res/layout/ingredient_list_fragment.xml" value="0.18958333333333333" />
         <entry key="app/src/main/res/layout/ingredients_fragment.xml" value="0.2006340579710145" />
         <entry key="app/src/main/res/layout/list_item_recipe.xml" value="0.2776268115942029" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/recipe_detail_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/recipe_list_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.3463541666666667" />
+        <entry key="app/src/main/res/menu/content_main.xml" value="0.3463541666666667" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.3463541666666667" />
       </map>
     </option>
   </component>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_recipe_list"
+            android:icon="@drawable/thumbnail"
+            android:title="Recipes"
+        />
+        <item
+            android:id="@+id/nav_ingredient_list"
+            android:icon="@drawable/thumbnail"
+            android:title="Ingredients"
+        />
+        <item
+            android:id="@+id/nav_recipe_detail"
+            android:icon="@drawable/thumbnail"
+            android:title="Recipe Details"
+        />
+    </group>
+</menu>
