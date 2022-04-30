@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Mixology</string>
     <string name="recipe_list_heading">Recipe List</string>
+    <string name="recipe_list_nav">Recipes</string>
     <string name="recipe_details_heading">Recipe Details</string>
     <string name="ingredient_list_heading">Ingredient List</string>
+    <string name="ingredient_list_nav">My Ingredients</string>
     <string name="thumbnail_alt_text">Recipe Thumbnail</string>
     <string name="fab_alt_text">Sync Recipes</string>
     <string name="default_string_s">Lorem ipsum</string>

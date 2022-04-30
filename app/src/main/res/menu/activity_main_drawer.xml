@@ -7,13 +7,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_recipe_list"
-            android:icon="@drawable/thumbnail"
-            android:title="Recipes"
+            android:icon="@drawable/recipe"
+            android:title="@string/recipe_list_nav"
         />
         <item
             android:id="@+id/nav_ingredient_list"
-            android:icon="@drawable/thumbnail"
-            android:title="Ingredients"
+            android:icon="@drawable/ingredient"
+            android:title="@string/ingredient_list_nav"
         />
     </group>
 </menu>
