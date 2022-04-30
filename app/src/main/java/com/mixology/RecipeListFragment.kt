@@ -48,11 +48,6 @@ class RecipeListFragment : Fragment() {
             findNavController().navigate(R.id.action_navigate_to_RecipeDetailFragment)
         }
 
-        // Navigates to ingredient list fragment when button
-        binding.ingredientListButton.setOnClickListener { view ->
-            findNavController().navigate(R.id.action_navigate_to_IngredientListFragment)
-        }
-
         // Adds new recipe to the recipeList when fab is clicked
         binding.fab.setOnClickListener { view ->
             val letter = (('a'..'z')).random()

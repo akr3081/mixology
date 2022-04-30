@@ -1,40 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/RecipeListFragment"
+    android:id="@+id/drawer_nav_graph"
+    app:startDestination="@+id/nav_recipe_list"
 >
     <fragment
-        android:id="@+id/RecipeListFragment"
+        android:id="@+id/nav_recipe_list"
         android:name="com.mixology.RecipeListFragment"
         android:label="@string/recipe_list_heading"
-        tools:layout="@layout/recipe_list_fragment">
-
+        tools:layout="@layout/recipe_list_fragment"
+    >
         <action
             android:id="@+id/action_navigate_to_RecipeDetailFragment"
-            app:destination="@id/RecipeDetailFragment"
-        />
-        <action
-            android:id="@+id/action_navigate_to_IngredientListFragment"
-            app:destination="@id/IngredientListFragment"
+            app:destination="@id/nav_recipe_detail"
         />
     </fragment>
-    <fragment
-        android:id="@+id/RecipeDetailFragment"
-        android:name="com.mixology.RecipeDetailFragment"
-        android:label="@string/recipe_details_heading"
-        tools:layout="@layout/recipe_detail_fragment">
 
-        <action
-            android:id="@+id/action_navigate_to_RecipeListFragment"
-            app:destination="@id/RecipeListFragment"
-        />
-    </fragment>
     <fragment
-        android:id="@+id/IngredientListFragment"
+        android:id="@+id/nav_ingredient_list"
         android:name="com.mixology.IngredientListFragment"
         android:label="@string/ingredient_list_heading"
-        tools:layout="@layout/ingredient_list_fragment">
-    </fragment>
+        tools:layout="@layout/ingredient_list_fragment"
+    />
+
+    <fragment
+        android:id="@+id/nav_recipe_detail"
+        android:name="com.mixology.RecipeDetailFragment"
+        android:label="@string/recipe_details_heading"
+        tools:layout="@layout/recipe_detail_fragment"
+    />
 </navigation>

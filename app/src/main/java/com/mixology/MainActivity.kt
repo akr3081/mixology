@@ -1,13 +1,9 @@
 package com.mixology
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
-import com.google.android.material.navigation.NavigationView
 import com.mixology.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,33 +14,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
+        setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_recipe_list, R.id.nav_ingredient_list), binding.drawerLayout)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-
-        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
-
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-
-        // CLicking on toolbar will navigate back to recipe list fragment
-        binding.appBarMain.toolbar.setNavigationOnClickListener {
-            navController.navigateUp()
-        }
+        binding.navView.setupWithNavController(navController)
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.main, menu)
-//        return true
-//    }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val navController = findNavController(R.id.nav_host_fragment_content_main)
-//        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
-//    }
+    // Handles when toolbar icon is clicked
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        return NavigationUI.navigateUp(navController, appBarConfiguration)
+    }
 }
